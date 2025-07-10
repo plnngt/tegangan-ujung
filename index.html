@@ -12,32 +12,42 @@
       padding: 20px;
       text-align: center;
     }
+
     .container {
       max-width: 1200px;
       margin: auto;
       padding: 0 15px;
     }
+
+    .logo {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+
     .judul {
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 0.2rem;
     }
+
     .subjudul {
       font-size: 1.8rem;
       color: #555;
       margin-bottom: 0.5rem;
     }
+
     .tahun {
       font-size: 1.2rem;
       color: #777;
       margin-bottom: 30px;
     }
+
     .responsive-iframe {
       position: relative;
-      padding-bottom: 56.65%;
-      height: 0;
+      width: 100%;
       overflow: hidden;
     }
+
     .responsive-iframe iframe {
       position: absolute;
       top: 0;
@@ -51,12 +61,30 @@
 <body>
 
   <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Logo_PLN.svg" alt="Logo PLN" class="logo" />
+
     <div class="judul">PT PLN (Persero)</div>
     <div class="subjudul">Laporan Tegangan Ujung Gardu</div>
     <div class="tahun">2025</div>
 
-    <div class="responsive-iframe">
+    <div id="iframeContainer" class="responsive-iframe">
       <iframe 
         src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSEXw6IdAyiK1vfQ6svlB7aAltrhUE7d_LWvDEQ98IBvVlfsgQIFI08522sQ7W-JASR9keBKZu3YIwh/pubhtml?gid=1288273645&single=true&widget=true&headers=false" 
         allowfullscreen>
-      </if
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    function updateIframeRatio() {
+      const container = document.getElementById('iframeContainer');
+      const isLandscape = window.innerWidth > window.innerHeight;
+      container.style.paddingBottom = isLandscape ? '60%' : '120%';
+    }
+
+    window.addEventListener('resize', updateIframeRatio);
+    window.addEventListener('load', updateIframeRatio);
+  </script>
+
+</body>
+</html>
